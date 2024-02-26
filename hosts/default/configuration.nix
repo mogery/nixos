@@ -91,13 +91,19 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # zsh setup (needs to be done here too, unfortunately)
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mogery = {
     isNormalUser = true;
     description = "mogery";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
+    shell = pkgs.zsh;
+    
+    # Try not to use packages here! home-manager is preferred.
+    # packages = with pkgs; [
+    # ];
   };
 
   # Enable automatic login for the user.
