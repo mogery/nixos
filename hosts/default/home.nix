@@ -77,18 +77,18 @@
 
     lfs.enable = true;
 
-    extraConfig.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+    };
   };
 
   # Configure the 1Password SSH Agent
   programs.ssh = {
     enable = true;
 
-    extraConfig = ''
-      Host *
-          IdentitiesOnly=yes
-          IdentityAgent ~/.1password/agent.sock
-    '';
+    forwardAgent = true;
+    extraConfig = "IdentityAgent ~/.1password/agent.sock";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
