@@ -91,6 +91,16 @@
     extraConfig = "IdentityAgent ~/.1password/agent.sock";
   };
 
+  # Configure zsh with oh-my-zsh
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
