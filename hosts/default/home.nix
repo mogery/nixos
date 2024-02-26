@@ -43,6 +43,7 @@
     vscode # TODO: vscode-with-extensions
     _1password
     _1password-gui
+    discord
   ];
 
   programs.firefox = {
