@@ -4,6 +4,7 @@
   imports = [
     inputs.nur.hmModules.nur
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/firefox.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -46,16 +47,6 @@
     _1password-gui
     discord
   ];
-
-  programs.firefox = {
-    enable = true;
-    profiles.mogery = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        onepassword-password-manager
-      ];
-    };
-  };
 
   programs.plasma = {
     enable = true;
