@@ -115,7 +115,11 @@
     sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "mogery" = import ./home.nix;
+      "mogery" = {
+        imports = [
+          ./home.nix
+        ];
+      };
     };
   };
 

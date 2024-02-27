@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.nur.hmModules.nur
+    ../../modules/home-manager/zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -94,15 +95,7 @@
     extraConfig = "IdentityAgent ~/.1password/agent.sock";
   };
 
-  # Configure zsh with oh-my-zsh
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-      theme = "robbyrussell";
-    };
-  };
+  programs.zsh.shellAliases.update = "sudo nixos-rebuild switch --flake /home/mogery/nixos#default";
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
