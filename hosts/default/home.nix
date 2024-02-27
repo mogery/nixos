@@ -66,6 +66,8 @@
 
     configFile = {
       "kcminputrc"."Mouse"."XLbInptNaturalScroll" = true;
+      "kscreenlockerrc"."Daemon"."Autolock" = false;
+      "kscreenlockerrc"."Daemon"."LockOnResume" = false;
     };
   };
 
