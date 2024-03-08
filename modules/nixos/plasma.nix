@@ -10,7 +10,7 @@
     wayland = {
       enable = true;
     };
-  }
+  };
   services.xserver.desktopManager.plasma6.enable = true;
   
   # Use plasma-manager with home-manager
