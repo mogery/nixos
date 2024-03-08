@@ -6,7 +6,7 @@
   
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
   
   # Use plasma-manager with home-manager
   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
