@@ -13,6 +13,7 @@
     ../../modules/nixos/plasma.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/tz-locale.nix
+    ../../modules/nixos/cider.nix
   ];
 
   system.stateVersion = "23.11";
