@@ -11,6 +11,7 @@
     ../../modules/home-manager/1password.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/discord.nix
+    ../../modules/home-manager/shotcut.nix
   ];
 
   home.username = "mogery";
