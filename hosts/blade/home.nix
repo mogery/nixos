@@ -13,6 +13,7 @@
     ../../modules/home-manager/discord.nix
     ../../modules/home-manager/shotcut.nix
     ../../modules/home-manager/cider.nix
+    ../../modules/home-manager/magic-wormhole.nix
   ];
 
   home.username = "mogery";
