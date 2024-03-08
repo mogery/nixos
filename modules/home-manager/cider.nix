@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-    users.users.mogery.packages =
+    home.packages =
         let
             cider = with pkgs; appimageTools.wrapType2 rec {
                 pname = "cider";

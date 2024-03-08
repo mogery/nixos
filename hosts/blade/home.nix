@@ -12,6 +12,7 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/discord.nix
     ../../modules/home-manager/shotcut.nix
+    ../../modules/home-manager/cider.nix
   ];
 
   home.username = "mogery";
