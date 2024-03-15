@@ -14,6 +14,7 @@
     ../../modules/home-manager/shotcut.nix
     ../../modules/home-manager/cider.nix
     ../../modules/home-manager/magic-wormhole.nix
+    ../../modules/home-manager/daytona.nix
   ];
 
   home.username = "mogery";
