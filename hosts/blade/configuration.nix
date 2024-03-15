@@ -15,6 +15,7 @@
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/davinci.nix
     ../../modules/nixos/docker.nix
+    ../../modules/nixos/virt-manager.nix
   ];
 
   system.stateVersion = "23.11";
