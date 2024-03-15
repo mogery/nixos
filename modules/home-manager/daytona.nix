@@ -11,20 +11,20 @@
                     let
                         urls = {
                             "x86_64-linux" = {
-                            url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-linux-amd64";
-                            hash = "sha256-IPTU0Jqq8SBtyCtcQgc3ZiBWBDJSczQUNw5LMrsqC3k=";
+                                url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-linux-amd64";
+                                sha256 = "14l8kimggi2vqspi7fx3dvdvdpj59i0bjicg904gs8kn8nwj3m1i";
                             };
                             "x86_64-darwin" = {
-                            url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-darwin-amd64";
-                            hash = "sha256-eR3DmbOTJsvD3W4Fqa8x/TBZlYHP/6YZoGrwJ+jGwUs=";
+                                url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-darwin-amd64";
+                                sha256 = "0gi9xci9cah5cwlnv73bhvk6zwhvvdb3nl338xf1fadwbx7dic6l";
                             };
                             "aarch64-linux" = {
-                            url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-linux-arm64";
-                            hash = "sha256-Yz5EikYRt8jOADDjsMDElr3H5RoiXtxM6R+vLKxkgy0=";
+                                url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-linux-arm64";
+                                sha256 = "0ikbh424wx6qk3y63m2w7wf4mswcyclq7r7m285ax09wahpkz35s";
                             };
                             "aarch64-darwin" = {
-                            url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-darwin-arm64";
-                            hash = "sha256-CJewbCx8ZGaW7GLdmZCCFD7kdDBdyH/eSR8LgC/Zavs=";
+                                url = "https://download.daytona.io/daytona/v${finalAttrs.version}/daytona-darwin-arm64";
+                                sha256 = "12gn1qz3qgj5i1xkcylp7yz8frxnrlfhc0vygyj66wc9xqzv3m0m";
                             };
                         };
                     in
