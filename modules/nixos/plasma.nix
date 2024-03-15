@@ -11,7 +11,7 @@
       enable = true;
     };
   };
-  services.xserver.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
   
   # Use plasma-manager with home-manager
   home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
