@@ -14,6 +14,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/davinci.nix
+    ../../modules/nixos/docker.nix
   ];
 
   system.stateVersion = "23.11";
