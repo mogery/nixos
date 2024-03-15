@@ -52,4 +52,6 @@
             });
         in
         [ daytona ];
+    
+    programs.ssh.includes = [ "daytona_config" ];
 }
