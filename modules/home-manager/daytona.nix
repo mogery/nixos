@@ -5,7 +5,7 @@
         let
             daytona = with pkgs; stdenvNoCC.mkDerivation (finalAttrs: {
                 pname = "daytona-bin";
-                version = "0.3.1";
+                version = "0.5.0";
 
                 src =
                     let
