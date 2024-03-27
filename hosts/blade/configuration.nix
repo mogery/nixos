@@ -53,6 +53,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable Wake on LAN
+  networking.interfaces.enp42s0.wakeOnLan.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
