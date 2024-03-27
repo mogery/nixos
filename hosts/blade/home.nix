@@ -16,6 +16,7 @@
     ../../modules/home-manager/magic-wormhole.nix
     ../../modules/home-manager/daytona.nix
     ../../modules/home-manager/virt-manager.nix
+    ../../modules/home-manager/homeassistant-desktop.nix
   ];
 
   home.username = "mogery";
