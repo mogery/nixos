@@ -8,7 +8,7 @@
     };
 
     configFile = {
-      "kcminputrc"."Mouse"."XLbInptNaturalScroll" = true; # macOS-style scrolling
+      "kcminputrc"."Mouse"."XLbInptNaturalScroll".value = true; # macOS-style scrolling
     };
   };
 }

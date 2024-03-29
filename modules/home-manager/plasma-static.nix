@@ -2,8 +2,8 @@
   # This makes KDE Plasma "static": it won't lock itself or
   # go to sleep unless when it its explicitly wanted.
   programs.plasma.configFile = {
-    "kscreenlockerrc"."Daemon"."Autolock" = false;
-    "kscreenlockerrc"."Daemon"."LockOnResume" = false;
+    "kscreenlockerrc"."Daemon"."Autolock".value = false;
+    "kscreenlockerrc"."Daemon"."LockOnResume".value = false;
   };
   
   home.file = {
