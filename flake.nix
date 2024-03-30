@@ -25,7 +25,10 @@
     in
     {
       nixosConfigurations.blade = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
+          specialArgs = {
+            inherit inputs;
+            currentConfig = "blade";
+          };
           modules = [
             ./hosts/blade/configuration.nix
             inputs.home-manager.nixosModules.default

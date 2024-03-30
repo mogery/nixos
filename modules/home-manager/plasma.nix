@@ -1,3 +1,4 @@
+{ currentConfig, ... }:
 {
   programs.plasma = {
     enable = true;
@@ -21,6 +22,9 @@
       "kwinrc"."NightColor"."LatitudeFixed".value = 47.43;
       "kwinrc"."NightColor"."LongitudeFixed".value = 18.92;
       "kwinrc"."NightColor"."NightTemperature".value = 3000;
+
+      # Wallpaper
+      "plasmarc"."Wallpapers"."usersWallpapers".value = builtins.toString (./. + "../../hosts/${currentConfig}/wallpaper.jpg");
     };
   };
 }
