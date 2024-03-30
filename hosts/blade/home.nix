@@ -13,6 +13,7 @@
     ../../modules/home-manager/discord.nix
     ../../modules/home-manager/shotcut.nix
     ../../modules/home-manager/cider.nix
+    ../../modules/home-manager/tuba.nix
     ../../modules/home-manager/magic-wormhole.nix
     ../../modules/home-manager/daytona.nix
     ../../modules/home-manager/virt-manager.nix
