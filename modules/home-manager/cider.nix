@@ -5,12 +5,12 @@
         let
             cider = with pkgs; appimageTools.wrapType2 rec {
                 pname = "cider";
-                version = "1.3.1308";
+                version = "2.3.2";
 
                 src = requireFile {
-                    name = "Cider-2.3.1.AppImage";
+                    name = "Cider-linux-appimage-x64.AppImage";
                     url = "https://cidercollective.itch.io/cider";
-                    sha256 = "19plc5dj7bh1gf5nq096kpj6c4bqx3xbsffvwfjshmlwz82dwa1p";
+                    sha256 = "1cfxvhkrr7vbwzki2z4qzdri748257j1dfgcy5rwrx894j19s3yi";
                 };
 
                 extraInstallCommands =
