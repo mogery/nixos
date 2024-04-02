@@ -16,6 +16,7 @@
     ../../modules/nixos/davinci.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/virt-manager.nix
+    ../../modules/nixos/tailscale.nix
   ];
 
   system.stateVersion = "23.11";
