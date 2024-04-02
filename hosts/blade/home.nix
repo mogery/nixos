@@ -18,6 +18,7 @@
     ../../modules/home-manager/daytona.nix
     ../../modules/home-manager/virt-manager.nix
     ../../modules/home-manager/homeassistant-desktop.nix
+    ../../modules/home-manager/alacritty.nix
   ];
 
   home.username = "mogery";
