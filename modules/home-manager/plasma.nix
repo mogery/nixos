@@ -27,4 +27,8 @@
       "plasmarc"."Wallpapers"."usersWallpapers".value = builtins.toString (./. + "../../hosts/${currentConfig}/wallpaper.jpg");
     };
   };
+
+  programs.zsh.shellAliases = {
+    pmdump = "nix run github:pjones/plasma-manager";
+  };
 }
