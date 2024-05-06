@@ -17,6 +17,7 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/virt-manager.nix
     ../../modules/nixos/tailscale.nix
+    ../../modules/nixos/unityhub.nix
   ];
 
   system.stateVersion = "23.11";
