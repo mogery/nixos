@@ -13,7 +13,6 @@
     ../../modules/nixos/plasma.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/tz-locale.nix
-    ../../modules/nixos/davinci.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/virt-manager.nix
     ../../modules/nixos/tailscale.nix
