@@ -34,5 +34,16 @@
             inputs.home-manager.nixosModules.default
           ];
         };
+
+      nixosConfigurations.breach = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            currentConfig = "breach";
+          };
+          modules = [
+            ./hosts/breach/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
     };
 }
