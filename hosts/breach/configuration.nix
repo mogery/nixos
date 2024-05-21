@@ -9,12 +9,14 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ../../modules/nixos/flakes.nix
+    ../../modules/nixos/nh.nix
     ../../modules/nixos/zsh.nix
     ../../modules/nixos/plasma.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/tailscale.nix
+    ../../modules/nixos/stylix.nix
   ];
 
   system.stateVersion = "23.11";

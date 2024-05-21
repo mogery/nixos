@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -42,6 +44,7 @@
           };
           modules = [
             ./hosts/breach/configuration.nix
+            inputs.stylix.nixosModules.stylix
             inputs.home-manager.nixosModules.default
           ];
         };

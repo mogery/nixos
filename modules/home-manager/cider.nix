@@ -5,18 +5,23 @@
         let
             cider = with pkgs; appimageTools.wrapType2 rec {
                 pname = "cider";
-                version = "2.3.2";
+                version = "2.4.0";
 
                 src = requireFile {
                     name = "Cider-linux-appimage-x64.AppImage";
                     url = "https://cidercollective.itch.io/cider";
-                    sha256 = "1cfxvhkrr7vbwzki2z4qzdri748257j1dfgcy5rwrx894j19s3yi";
+                    sha256 = "159r8g7sjzr1xh4adfw01cgymrl802lj1mzybxmah6a4mihqj8rx";
+                    message = ''
+                        Cider not found.
+                        1. acquire Cider-linux-appimage-x64.AppImage from itch.io
+                        2. in a shell, execute:
+                            nix-prefetch-url file:///path/to/Cider-linux-appimage-x64.AppImage
+                    '';
                 };
 
                 extraInstallCommands =
                     let contents = appimageTools.extract { inherit pname version src; };
                     in ''
-                    mv $out/bin/${pname}-${version} $out/bin/${pname}
                     install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
                     substituteInPlace $out/share/applications/${pname}.desktop \
                         --replace 'Exec=AppRun' 'Exec=${pname}'

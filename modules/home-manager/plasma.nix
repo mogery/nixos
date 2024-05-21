@@ -24,7 +24,7 @@
       "kwinrc"."NightColor"."NightTemperature".value = 3000;
 
       # Wallpaper
-      "plasmarc"."Wallpapers"."usersWallpapers".value = builtins.toString (./. + "../../hosts/${currentConfig}/wallpaper.jpg");
+      "plasmarc"."Wallpapers"."usersWallpapers".value = builtins.toString (./. + "../../wallpaper.png");
     };
   };
 
