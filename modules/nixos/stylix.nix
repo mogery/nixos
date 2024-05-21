@@ -16,4 +16,6 @@
             name = "Inter";
         };
     };
+
+    stylix.polarity = "dark";
 }
