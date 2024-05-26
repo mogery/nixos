@@ -17,6 +17,7 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/stylix.nix
+    ../../modules/nixos/bitwig-studio.nix
   ];
 
   system.stateVersion = "23.11";
