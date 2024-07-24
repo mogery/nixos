@@ -13,6 +13,7 @@
     ../../modules/home-manager/discord.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/cider.nix
+    ../../modules/home-manager/slack.nix
   ];
 
   home.username = "mogery";

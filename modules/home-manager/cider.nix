@@ -10,7 +10,7 @@
                 src = requireFile {
                     name = "Cider-linux-appimage-x64.AppImage";
                     url = "https://cidercollective.itch.io/cider";
-                    sha256 = "159r8g7sjzr1xh4adfw01cgymrl802lj1mzybxmah6a4mihqj8rx";
+                    sha256 = "1ds7grjr52ssf1q0sm9jk7hxhskfxj6b5pzrmibliglhbzblflx7";
                     message = ''
                         Cider not found.
                         1. acquire Cider-linux-appimage-x64.AppImage from itch.io
