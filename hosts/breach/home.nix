@@ -14,6 +14,7 @@
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/cider.nix
     ../../modules/home-manager/slack.nix
+    ../../modules/home-manager/httpie.nix
   ];
 
   home.username = "mogery";
