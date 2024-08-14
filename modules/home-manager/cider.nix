@@ -5,7 +5,7 @@
         let
             cider = with pkgs; appimageTools.wrapType2 rec {
                 pname = "cider";
-                version = "2.4.0";
+                version = "2.4.1";
 
                 src = requireFile {
                     name = "Cider-linux-appimage-x64.AppImage";
