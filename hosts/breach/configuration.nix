@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ../../modules/nixos/flakes.nix
+    ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/nh.nix
     ../../modules/nixos/zsh.nix
     ../../modules/nixos/plasma.nix
@@ -37,9 +38,9 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       amdvlk
       vaapiVdpau
@@ -78,8 +79,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "mogery";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "mogery";
 
   home-manager = {
     useGlobalPkgs = true;

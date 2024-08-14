@@ -5,7 +5,7 @@
   services.xserver.enable = true;
   
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland = {
       enable = true;
