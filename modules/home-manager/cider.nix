@@ -5,12 +5,12 @@
         let
             cider = with pkgs; appimageTools.wrapType2 rec {
                 pname = "cider";
-                version = "2.4.1";
+                version = "2.5.0";
 
                 src = requireFile {
                     name = "Cider-linux-appimage-x64.AppImage";
                     url = "https://cidercollective.itch.io/cider";
-                    sha256 = "1ds7grjr52ssf1q0sm9jk7hxhskfxj6b5pzrmibliglhbzblflx7";
+                    sha256 = "1nm35psq9ddii2c15kb03ifcn43fimvc4yzb4cpm1gqsiz4w21qz";
                     message = ''
                         Cider not found.
                         1. acquire Cider-linux-appimage-x64.AppImage from itch.io
