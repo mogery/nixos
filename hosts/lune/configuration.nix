@@ -19,6 +19,22 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "lune";
+  networking.useDHCP = false;
+  networking.interfaces."enp0s31f6".ipv4.addresses = [
+    {
+      address = "136.243.155.39";
+      prefixLength = 24;
+    }
+  ];
+  networking.interfaces."enp0s31f6".ipv6.addresses = [
+    {
+      address = "2a01:4f8:171:1d90::1";
+      prefixLength = 64;
+    }
+  ];
+  networking.defaultGateway = "136.243.155.1";
+  networking.defaultGateway6 = { address = "fe80::1"; interface = "enp0s31f6"; };
+  networking.nameservers = [ "1.1.1.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -63,5 +79,11 @@
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
     allowedUDPPorts = [ config.services.tailscale.port ];
+    allowedTCPPorts = [
+      6443 # k3s
+    ];
   };
+
+  services.k3s.enable = true;
+  services.k3s.role = "server";
 }
