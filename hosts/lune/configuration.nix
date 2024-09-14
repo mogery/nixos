@@ -98,7 +98,7 @@
       # This pattern also allows to seamlessly move the homeserver from
       # myhostname.example.org to myotherhost.example.org by only changing the
       # /.well-known redirection target.
-      "${config.networking.domain}" = {
+      "mogery.me" = {
         enableACME = true;
         forceSSL = true;
         # This section is not needed if the server_name of matrix-synapse is equal to
