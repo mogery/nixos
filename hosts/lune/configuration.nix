@@ -144,6 +144,7 @@
     settings.server_name = "mogery.me";
     settings.public_baseurl = "https://matrix.mogery.me";
     settings.enable_registration = true;
+    settings.enable_registration_without_verification = true;
     settings.listeners = [
         {
             port = 8448;
