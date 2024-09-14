@@ -91,7 +91,52 @@
   environment.etc."kubenix.yaml".source = (inputs.kubenix.evalModules.x86_64-linux {
     module = { kubenix, ... }: {
         imports = [ kubenix.modules.k8s ];
-        kubernetes.resources.pods.example.spec.containers.example.image = "nginx";
+        kubernetes.resources.deployments = {
+            jellyfin = {
+                metadata.labels = {
+                    app = "media";
+                    component = "jellyfin";
+                };
+
+                spec = {
+                    selector.matchLabels = {
+                        app = "media";
+                        component = "jellyfin";
+                    };
+
+                    template = {
+                        metadata.labels = {
+                            app = "media";
+                            component = "jellyfin";
+                        };
+
+                        spec = {
+                            containers.jellyfin = {
+                                image = "jellyfin/jellyfin:10.9.11.20240907-221241";
+                                envFrom = [{ configMapRef.name = "jellyfin-env"; }];
+                                ports.web.containerPort = 8096;
+
+                                volumeMounts = [
+                                    {
+                                        name = "config";
+                                        mountPath = "/config";
+                                    }
+                                    {
+                                        name = "media";
+                                        mountPath = "/media";
+                                    }
+                                ];
+
+                                volumes = {
+                                    config.persistentVolumeClaim.claimName = "jellyfin-config";
+                                    media.persistentVolumeClaim.claimName = "media";
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+        };
     };
   }).config.kubernetes.resultYAML;
 
