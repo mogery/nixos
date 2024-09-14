@@ -7,9 +7,11 @@
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
     ../../modules/nixos/flakes.nix
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/tailscale.nix
+    ../../modules/nixos/nh.nix
   ];
 
   system.stateVersion = "24.11";
@@ -36,10 +38,30 @@
     ];
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    extraSpecialArgs = { inherit inputs; inherit currentConfig; };
+    backupFileExtension = "backup";
+    users = {
+      "mogery" = {
+        imports = [
+          ./home.nix
+        ];
+      };
+    };
+  };
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "mogery";
 
   # SSH
   services.openssh.enable = true;
+  services.openssh.openFirewall = false;
+
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
 }
