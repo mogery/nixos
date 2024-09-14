@@ -19,6 +19,7 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/stylix.nix
     ../../modules/nixos/bitwig-studio.nix
+    ../../modules/nixos/virt-manager.nix
   ];
 
   system.stateVersion = "23.11";
@@ -94,4 +95,9 @@
       };
     };
   };
+
+  services.udev.extraRules = ''
+    # Faulty SD reader  
+    ATTRS{idVendor}=="05e3", ATTRS{idProduct}=="0723", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
+  '';
 }

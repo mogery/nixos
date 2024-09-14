@@ -15,6 +15,7 @@
     ../../modules/home-manager/cider.nix
     ../../modules/home-manager/slack.nix
     ../../modules/home-manager/httpie.nix
+    ../../modules/home-manager/virt-manager.nix
   ];
 
   home.username = "mogery";
