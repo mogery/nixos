@@ -164,10 +164,12 @@
 
   services.postgresql = {
     enable = true;
-    ensureUsers."matrix-synapse" = {
-        name = "matrix-synapse";
-        ensureDBOwnership = true;
-    };
+    ensureUsers = [
+        {
+            name = "matrix-synapse";
+            ensureDBOwnership = true;
+        }
+    ];
     ensureDatabases = [ "matrix-synapse" ];
   };
 }
