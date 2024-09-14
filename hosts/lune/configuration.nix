@@ -140,7 +140,7 @@
   };
 
   environment.etc."matrix-secrets.yaml" = {
-    source = ./matrix-secrets.yaml;
+    source = "/home/mogery/nixos/hosts/lune/matrix-secrets.yaml";
   };
 
   services.matrix-synapse = {
