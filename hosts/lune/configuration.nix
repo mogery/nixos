@@ -142,7 +142,7 @@
   services.matrix-synapse = {
     enable = true;
     settings.server_name = "mogery.me";
-    settings.public_baseurl = "matrix.mogery.me";
+    settings.public_baseurl = "https://matrix.mogery.me";
     settings.enable_registration = true;
     settings.listeners = [
         {
