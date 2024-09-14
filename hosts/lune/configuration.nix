@@ -139,15 +139,12 @@
     };
   };
 
-  environment.etc."matrix-secrets.yaml" = {
-    source = "/home/mogery/nixos/hosts/lune/matrix-secrets.yaml";
-  };
-
   services.matrix-synapse = {
     extraConfigFiles = [ "/etc/matrix-secrets.yaml" ];
     enable = true;
     settings.server_name = "mogery.me";
     settings.public_baseurl = "matrix.mogery.me";
+    settings.enable_registration = true;
     settings.listeners = [
         {
             port = 8448;
