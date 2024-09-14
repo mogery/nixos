@@ -137,6 +137,19 @@
                 };
             };
         };
+
+        kubernetes.resources.clusterRoles = {
+            metadata = {
+                name = "service-reader";
+            };
+            rules = [
+                {
+                    apiGroups = [ "" ];
+                    resources = [ "services" ];
+                    verbs = [ "get" "watch" "list" ];
+                }
+            ];
+        };
     };
   }).config.kubernetes.resultYAML;
 
