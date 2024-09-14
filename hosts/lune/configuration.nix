@@ -84,17 +84,18 @@
     ];
   };
 
+  # kubernetes
   services.k3s.enable = true;
   services.k3s.role = "server";
 
-  environment.systemPackages = with pkgs; [
-    (wrapHelm kubernetes-helm {
-        plugins = with pkgs.kubernetes-helmPlugins; [
-            helm-secrets
-            helm-diff
-            helm-s3
-            helm-git
-        ];
-    })
-  ];
+  environment.etc."kubenix.yaml".source = (kubenix.evalModules.x86_64-linux {
+    module = { kubenix, ... }: {
+        imports = [ kubenix.modules.k8s ];
+        kubernetes.resources.pods.example.spec.containers.example.image = "nginx";
+    };
+  }).config.kubernetes.resultYAML;
+
+  system.activationScripts.kubenix.text = ''
+    ln -sf /etc/kubenix.yaml /var/lib/rancher/k3s/server/manifests/kubenix.yaml
+  '';
 }

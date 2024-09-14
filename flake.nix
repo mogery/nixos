@@ -18,6 +18,8 @@
     };
 
     stylix.url = "github:danth/stylix";
+
+    kubenix.url = "github:hall/kubenix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
