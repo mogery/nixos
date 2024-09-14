@@ -84,76 +84,79 @@
     ];
   };
 
-  # kubernetes
-  services.k3s.enable = true;
-  services.k3s.role = "server";
+  services.nginx = {
+    enable = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+    virtualHosts = {
+      # If the A and AAAA DNS records on example.org do not point on the same host as the
+      # records for myhostname.example.org, you can easily move the /.well-known
+      # virtualHost section of the code to the host that is serving example.org, while
+      # the rest stays on myhostname.example.org with no other changes required.
+      # This pattern also allows to seamlessly move the homeserver from
+      # myhostname.example.org to myotherhost.example.org by only changing the
+      # /.well-known redirection target.
+      "${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        # This section is not needed if the server_name of matrix-synapse is equal to
+        # the domain (i.e. example.org from @foo:example.org) and the federation port
+        # is 8448.
+        # Further reference can be found in the docs about delegation under
+        # https://element-hq.github.io/synapse/latest/delegate.html
+        locations."= /.well-known/matrix/server".extraConfig = ''
+            default_type application/json;
+            add_header Access-Control-Allow-Origin *;
+            return 200 '{"m.server": "matrix.mogery.me:443"}';
+        '';
+        # This is usually needed for homeserver discovery (from e.g. other Matrix clients).
+        # Further reference can be found in the upstream docs at
+        # https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient
+        locations."= /.well-known/matrix/client".extraConfig = ''
+            default_type application/json;
+            add_header Access-Control-Allow-Origin *;
+            return 200 '{"m.homeserver": {"base_url": "https://matrix.mogery.me"}}';
+        '';
+      };
+      "matrix.mogery.me" = {
+        enableACME = true;
+        forceSSL = true;
+        # It's also possible to do a redirect here or something else, this vhost is not
+        # needed for Matrix. It's recommended though to *not put* element
+        # here, see also the section about Element.
+        locations."/".extraConfig = ''
+          return 404;
+        '';
+        # Forward all Matrix API calls to the synapse Matrix homeserver. A trailing slash
+        # *must not* be used here.
+        locations."/_matrix".proxyPass = "http://[::1]:8448";
+        # Forward requests for e.g. SSO and password-resets.
+        locations."/_synapse/client".proxyPass = "http://[::1]:8448";
+      };
+    };
+  };
 
-  environment.etc."kubenix.yaml".source = (inputs.kubenix.evalModules.x86_64-linux {
-    module = { kubenix, ... }: {
-        imports = [ kubenix.modules.k8s ];
-        kubernetes.resources.deployments = {
-            jellyfin = {
-                metadata.labels = {
-                    app = "media";
-                    component = "jellyfin";
-                };
-
-                spec = {
-                    selector.matchLabels = {
-                        app = "media";
-                        component = "jellyfin";
-                    };
-
-                    template = {
-                        metadata.labels = {
-                            app = "media";
-                            component = "jellyfin";
-                        };
-
-                        spec = {
-                            containers.jellyfin = {
-                                image = "jellyfin/jellyfin:10.9.11.20240907-221241";
-                                envFrom = [{ configMapRef.name = "jellyfin-env"; }];
-                                ports.web.containerPort = 8096;
-
-                                volumeMounts = [
-                                    {
-                                        name = "config";
-                                        mountPath = "/config";
-                                    }
-                                    {
-                                        name = "media";
-                                        mountPath = "/media";
-                                    }
-                                ];
-                            };
-
-                            volumes = {
-                                config.persistentVolumeClaim.claimName = "jellyfin-config";
-                                media.persistentVolumeClaim.claimName = "media";
-                            };
-                        };
-                    };
-                };
-            };
-        };
-
-        kubernetes.resources.clusterRoles = {
-            metadata = {
-                name = "service-reader";
-            };
-            rules = [
+  services.matrix-synapse = {
+    extraConfigFiles = [ ./matrix-secrets.nix ];
+    enable = true;
+    settings.server_name = "mogery.me";
+    settings.public_baseurl = "matrix.mogery.me";
+    settings.listeners = [
+        {
+            port = 8448;
+            bind_addresses = [ "::1" ];
+            type = "http";
+            tls = false;
+            x_forwarded = true;
+            resources = [
                 {
-                    apiGroups = [ "" ];
-                    resources = [ "services" ];
-                    verbs = [ "get" "watch" "list" ];
+                    names = [ "client" "federation" ];
+                    compress = true;
                 }
             ];
-        };
-    };
-  }).config.kubernetes.resultYAML;
-
-  system.activationScripts.kubenix.text = ''
-    ln -sf /etc/kubenix.yaml /var/lib/rancher/k3s/server/manifests/kubenix.yaml
-  '';
+        }
+    ];
+  };
 }
