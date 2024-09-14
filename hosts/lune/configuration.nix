@@ -88,7 +88,7 @@
   services.k3s.enable = true;
   services.k3s.role = "server";
 
-  environment.etc."kubenix.yaml".source = (kubenix.evalModules.x86_64-linux {
+  environment.etc."kubenix.yaml".source = (inputs.kubenix.evalModules.x86_64-linux {
     module = { kubenix, ... }: {
         imports = [ kubenix.modules.k8s ];
         kubernetes.resources.pods.example.spec.containers.example.image = "nginx";
