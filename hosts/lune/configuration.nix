@@ -85,6 +85,7 @@
   };
 
   security.acme.defaults.email = "mo.geryy@gmail.com";
+  security.acme.acceptTerms = true;
 
   services.nginx = {
     enable = true;
