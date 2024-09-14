@@ -169,5 +169,5 @@
         ensureDBOwnership = true;
     };
     ensureDatabases = [ "matrix-synapse" ];
-  }
+  };
 }
