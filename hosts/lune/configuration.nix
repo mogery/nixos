@@ -139,7 +139,7 @@
   };
 
   services.matrix-synapse = {
-    extraConfigFiles = [ ./matrix-secrets.nix ];
+    extraConfigFiles = [ "./matrix-secrets.yaml" ];
     enable = true;
     settings.server_name = "mogery.me";
     settings.public_baseurl = "matrix.mogery.me";
