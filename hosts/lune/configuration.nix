@@ -31,6 +31,9 @@
     isNormalUser = true;
     description = "mogery";
     extraGroups = [ "networkmanager" "wheel" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGHjO+acP+XXWdGGr4GwX6ncEX8Nf/rcgwDyEfUPKE9"
+    ];
   };
 
   # Enable automatic login for the user.
