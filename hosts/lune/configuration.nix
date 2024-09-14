@@ -126,11 +126,11 @@
                                         mountPath = "/media";
                                     }
                                 ];
+                            };
 
-                                volumes = {
-                                    config.persistentVolumeClaim.claimName = "jellyfin-config";
-                                    media.persistentVolumeClaim.claimName = "media";
-                                };
+                            volumes = {
+                                config.persistentVolumeClaim.claimName = "jellyfin-config";
+                                media.persistentVolumeClaim.claimName = "media";
                             };
                         };
                     };
