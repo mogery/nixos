@@ -79,9 +79,7 @@
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
     allowedUDPPorts = [ config.services.tailscale.port ];
-    allowedTCPPorts = [
-      6443 # k3s
-    ];
+    allowedTCPPorts = [ 80 443 ];
   };
 
   security.acme.defaults.email = "mo.geryy@gmail.com";
@@ -89,10 +87,10 @@
 
   services.nginx = {
     enable = true;
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedProxySettings = true;
+    recommendedTlsSettings = false;
+    recommendedOptimisation = false;
+    recommendedGzipSettings = false;
+    recommendedProxySettings = false;
     virtualHosts = {
       # If the A and AAAA DNS records on example.org do not point on the same host as the
       # records for myhostname.example.org, you can easily move the /.well-known
@@ -142,7 +140,7 @@
   };
 
   services.matrix-synapse = {
-    extraConfigFiles = [ "./matrix-secrets.yaml" ];
+    extraConfigFiles = [ "/home/mogery/nixos/hosts/lune/matrix-secrets.yaml" ];
     enable = true;
     settings.server_name = "mogery.me";
     settings.public_baseurl = "matrix.mogery.me";
