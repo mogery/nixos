@@ -84,6 +84,8 @@
     ];
   };
 
+  security.acme.defaults.email = "mo.geryy@gmail.com";
+
   services.nginx = {
     enable = true;
     recommendedTlsSettings = true;
