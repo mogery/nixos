@@ -48,5 +48,17 @@
             inputs.home-manager.nixosModules.default
           ];
         };
+      
+      nixosConfigurations.lune = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            currentConfig = "lune";
+          };
+          modules = [
+            ./hosts/lune/configuration.nix
+          ];
+        };
     };
+
+    
 }
