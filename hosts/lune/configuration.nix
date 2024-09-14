@@ -139,8 +139,12 @@
     };
   };
 
+  environment.etc."matrix-secrets.yaml" = {
+    source = ./matrix-secrets.yaml;
+  };
+
   services.matrix-synapse = {
-    extraConfigFiles = [ "/home/mogery/nixos/hosts/lune/matrix-secrets.yaml" ];
+    extraConfigFiles = [ "/etc/matrix-secrets.yaml" ];
     enable = true;
     settings.server_name = "mogery.me";
     settings.public_baseurl = "matrix.mogery.me";
