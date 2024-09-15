@@ -16,6 +16,7 @@
     ../../modules/home-manager/slack.nix
     ../../modules/home-manager/httpie.nix
     ../../modules/home-manager/virt-manager.nix
+    # ../../modules/home-manager/fluffychat.nix
   ];
 
   home.username = "mogery";
