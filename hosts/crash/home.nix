@@ -1,0 +1,29 @@
+{ config, pkgs, inputs, ... }:
+
+{
+  imports = [
+    inputs.nur.hmModules.nur
+    ../../modules/home-manager/plasma.nix
+    ../../modules/home-manager/plasma-static.nix
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/vscode.nix
+    ../../modules/home-manager/1password.nix
+    ../../modules/home-manager/firefox.nix
+    ../../modules/home-manager/discord.nix
+    ../../modules/home-manager/alacritty.nix
+#    ../../modules/home-manager/cider.nix
+    ../../modules/home-manager/slack.nix
+    ../../modules/home-manager/httpie.nix
+#    ../../modules/home-manager/fluffychat.nix
+  ];
+
+  home.username = "mogery";
+  home.homeDirectory = "/home/mogery";
+  home.stateVersion = "23.11";
+  programs.home-manager.enable = true;
+
+  programs.zsh.shellAliases = {
+    update = "nh os switch";
+  };
+}

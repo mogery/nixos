@@ -60,6 +60,18 @@
             ./hosts/lune/configuration.nix
           ];
         };
+
+      nixosConfigurations.crash = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            currentConfig = "crash";
+          };
+          modules = [
+            ./hosts/crash/configuration.nix
+            inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
     };
 
     
