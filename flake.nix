@@ -18,8 +18,6 @@
     };
 
     stylix.url = "github:danth/stylix";
-
-    kubenix.url = "github:hall/kubenix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -72,7 +70,18 @@
             inputs.home-manager.nixosModules.default
           ];
         };
-    };
 
-    
+      nixosConfigurations.osaka = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit inputs;
+            currentConfig = "osaka";
+          };
+          modules = [
+            ./hosts/osaka/configuration.nix
+            inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
+    };
 }
