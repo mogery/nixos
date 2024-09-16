@@ -12,10 +12,9 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/discord.nix
     ../../modules/home-manager/alacritty.nix
-#    ../../modules/home-manager/cider.nix
+    ../../modules/home-manager/cider.nix
     ../../modules/home-manager/slack.nix
     ../../modules/home-manager/httpie.nix
-#    ../../modules/home-manager/fluffychat.nix
   ];
 
   home.username = "mogery";

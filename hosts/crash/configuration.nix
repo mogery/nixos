@@ -16,6 +16,8 @@
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/stylix.nix
+    ../../modules/nixos/steam.nix
+    ../../modules/nixos/fluffychat.nix
   ];
 
   system.stateVersion = "23.11";

@@ -5,7 +5,7 @@
     "fluffychat-linux-1.20.0"
   ];
 
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     fluffychat
   ];
 }
