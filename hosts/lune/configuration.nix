@@ -48,7 +48,7 @@
   users.users.mogery = {
     isNormalUser = true;
     description = "mogery";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGHjO+acP+XXWdGGr4GwX6ncEX8Nf/rcgwDyEfUPKE9"
     ];
@@ -144,6 +144,12 @@
     settings.server_name = "mogery.me";
     settings.public_baseurl = "https://matrix.mogery.me";
     settings.enable_registration = false;
+    settings.app_service_config_files = [
+      "/var/lib/matrix-synapse/instagram-registration.yaml"
+      "/var/lib/matrix-synapse/messenger-registration.yaml"
+      "/var/lib/matrix-synapse/discord-registration.yaml"
+      "/var/lib/matrix-synapse/imessage-registration.yaml"
+    ];
     settings.listeners = [
         {
             port = 8448;
@@ -168,7 +174,137 @@
             name = "matrix-synapse";
             ensureDBOwnership = true;
         }
+        {
+            name = "mautrix-instagram";
+            ensureDBOwnership = true;
+        }
+        {
+            name = "mautrix-messenger";
+            ensureDBOwnership = true;
+        }
+        {
+            name = "mautrix-discord";
+            ensureDBOwnership = true;
+        }
     ];
-    ensureDatabases = [ "matrix-synapse" ];
+    ensureDatabases = [ "matrix-synapse" "mautrix-instagram" "mautrix-messenger" "mautrix-discord" ];
   };
+
+  users.users."mautrix-instagram" = {
+    isSystemUser = true;
+    description = "mautrix-instagram";
+    home = "/opt/mautrix-instagram";
+    createHome = true;
+    group = "mautrix";
+  };
+
+  users.users."mautrix-messenger" = {
+    isSystemUser = true;
+    description = "mautrix-messenger";
+    home = "/opt/mautrix-messenger";
+    createHome = true;
+    group = "mautrix";
+  };
+
+  users.users."mautrix-discord" = {
+    isSystemUser = true;
+    description = "mautrix-discord";
+    home = "/opt/mautrix-discord";
+    createHome = true;
+    group = "mautrix";
+    packages = with pkgs; [ mautrix-discord ];
+  };
+
+  users.users."mautrix-imessage" = {
+    isSystemUser = true;
+    description = "mautrix-imessage";
+    home = "/opt/mautrix-imessage";
+    createHome = true;
+    group = "mautrix";
+  };
+
+  users.groups.mautrix = {};
+
+  systemd.services."mautrix-instagram" = {
+    enable = true;
+
+    unitConfig = {
+      Description = "mautrix-meta bridge for Instagram";
+    };
+
+    serviceConfig = {
+      User = "mautrix-instagram";
+      WorkingDirectory = "/opt/mautrix-instagram";
+      ExecStart = "/opt/mautrix-instagram/mautrix-meta";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services."mautrix-messenger" = {
+    enable = true;
+
+    unitConfig = {
+      Description = "mautrix-meta bridge for Messenger";
+    };
+
+    serviceConfig = {
+      User = "mautrix-messenger";
+      WorkingDirectory = "/opt/mautrix-messenger";
+      ExecStart = "/opt/mautrix-messenger/mautrix-meta";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services."mautrix-discord" = {
+    enable = true;
+
+    unitConfig = {
+      Description = "mautrix-discord bridge";
+    };
+
+    serviceConfig = {
+      User = "mautrix-discord";
+      WorkingDirectory = "/opt/mautrix-discord";
+      ExecStart = "/etc/profiles/per-user/mautrix-discord/bin/mautrix-discord -c /opt/mautrix-discord/config.yaml";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  systemd.services."mautrix-imessage" = {
+    enable = true;
+
+    unitConfig = {
+      Description = "mautrix-imessage bridge";
+    };
+
+    serviceConfig = {
+      User = "mautrix-imessage";
+      WorkingDirectory = "/opt/mautrix-imessage/OSX-KVM";
+      ExecStart = "/opt/mautrix-imessage/OSX-KVM/OpenCore-Boot.sh";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+
+  virtualisation.libvirtd.enable = true;
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';
 }
