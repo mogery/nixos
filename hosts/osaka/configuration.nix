@@ -18,6 +18,7 @@
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/stylix.nix
+    ../../modules/nixos/fluffychat.nix
     ./apple-silicon-support
   ];
 
