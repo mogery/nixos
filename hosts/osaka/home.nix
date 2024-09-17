@@ -12,7 +12,7 @@
 #    ../../modules/home-manager/discord.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/thunderbird.nix
-    ../../modules/home-manager/zed-editor.nix
+    ../../modules/home-manager/zed.nix
 #    ../../modules/home-manager/slack.nix
   ];
 
