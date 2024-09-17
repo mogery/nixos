@@ -15,6 +15,8 @@
     ../../modules/home-manager/cider.nix
     ../../modules/home-manager/slack.nix
     ../../modules/home-manager/httpie.nix
+    ../../modules/home-manager/thunderbird.nix
+    ../../modules/home-manager/zed.nix
   ];
 
   home.username = "mogery";
