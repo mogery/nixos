@@ -18,9 +18,11 @@
     };
 
     stylix.url = "github:danth/stylix";
+
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-apple-silicon, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

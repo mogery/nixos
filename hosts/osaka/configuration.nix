@@ -7,6 +7,7 @@
 
 {
   imports = [
+    inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ../../modules/nixos/flakes.nix
@@ -19,15 +20,18 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/stylix.nix
     ../../modules/nixos/fluffychat.nix
-    ./apple-silicon-support
   ];
 
   system.stateVersion = "24.11";
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ inputs.nixos-apple-silicon.overlays.apple-silicon-overlay ];
 
   networking.hostName = "osaka";
 
-  hardware.asahi.withRust = true;
+  hardware.asahi = {
+    useExperimentalGPUDriver = true;
+#    experimentalGPUInstallMode = "overlay";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -60,18 +64,18 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "mogery";
 
-  home-manager = {
-    useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs; inherit currentConfig; };
-    backupFileExtension = "backup";
-    users = {
-      "mogery" = {
-        imports = [
-          ./home.nix
-        ];
-      };
-    };
-  };
+ home-manager = {
+   useGlobalPkgs = true;
+   extraSpecialArgs = { inherit inputs; inherit currentConfig; };
+   backupFileExtension = "backup";
+   users = {
+     "mogery" = {
+       imports = [
+         ./home.nix
+       ];
+     };
+   };
+ };
 
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
 }
