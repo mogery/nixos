@@ -102,6 +102,11 @@
       "mogery.me" = {
         enableACME = true;
         forceSSL = true;
+
+        locations."= /".extraConfig = ''
+            return 301 https://blog.mogery.me
+        '';
+
         # This section is not needed if the server_name of matrix-synapse is equal to
         # the domain (i.e. example.org from @foo:example.org) and the federation port
         # is 8448.
@@ -307,4 +312,10 @@
     options kvm_intel emulate_invalid_guest_state=0
     options kvm ignore_msrs=1
   '';
+
+  # jellyfin
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 }
