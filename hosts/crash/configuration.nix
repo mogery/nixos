@@ -18,6 +18,7 @@
     ../../modules/nixos/stylix.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/fluffychat.nix
+    ../../modules/nixos/berkeley-mono.nix
   ];
 
   system.stateVersion = "23.11";
