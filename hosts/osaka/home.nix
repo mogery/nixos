@@ -14,6 +14,7 @@
     ../../modules/home-manager/thunderbird.nix
 #    ../../modules/home-manager/slack.nix
     ../../modules/home-manager/feishin.nix
+    ../../modules/home-manager/obsidian.nix
   ];
 
   home.username = "mogery";

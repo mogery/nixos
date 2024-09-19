@@ -13,6 +13,6 @@
   programs.home-manager.enable = true;
 
   programs.zsh.shellAliases = {
-    update = "sudo nixos-rebuild switch --flake /home/mogery/nixos#blade";
+    update = "sudo nixos-rebuild switch --flake /home/mogery/nixos#lune";
   };
 }
