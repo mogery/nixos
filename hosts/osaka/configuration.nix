@@ -20,6 +20,7 @@
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/stylix.nix
     ../../modules/nixos/fluffychat.nix
+    ../../modules/nixos/berkeley-mono.nix
   ];
 
   system.stateVersion = "24.11";

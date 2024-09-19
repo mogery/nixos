@@ -15,6 +15,7 @@
 #    ../../modules/home-manager/slack.nix
     ../../modules/home-manager/feishin.nix
     ../../modules/home-manager/obsidian.nix
+    ../../modules/home-manager/berkeley-mono.nix
   ];
 
   home.username = "mogery";

@@ -10,7 +10,7 @@
 
                 src = pkgs.requireFile {
                     name = "${finalAttrs.pname}-${finalAttrs.version}.zip";
-                    sha256 = "0mwdgsqmqaj6hgx50v8l25zn3x7pi9kkzgxnn7xsxp8ng2anpvfy";
+                    sha256 = "0w702gjd9v9nq2va9ph072xsvc7qn7nhw7zb6hf8wiikrjiz46a2";
                     message = ''
                         This file needs to be manually downloaded from the Berkeley Graphics
                         site (https://berkeleygraphics.com/accounts). An email will be sent to
