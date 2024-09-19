@@ -104,7 +104,7 @@
         forceSSL = true;
 
         locations."= /".extraConfig = ''
-            return 301 https://blog.mogery.me
+            return 301 https://blog.mogery.me;
         '';
 
         # This section is not needed if the server_name of matrix-synapse is equal to
@@ -317,5 +317,26 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
+    group = "media";
   };
+
+  services.slskd = {
+    enable = true;
+    domain = "slskd.mogery.me";
+    group = "media";
+    openFirewall = true;
+    environmentFile = "/var/lib/slskd/.env";
+    nginx = {
+      enableACME = true;
+      forceSSL = true;
+    };
+    settings = {
+      shares = {
+        filters = [ "\\[PRIVATE\\]" "\\.asd$" "\\.lrc$" ];
+        directories = [ "/var/lib/jellyfin/libraries/music/" ];
+      };
+    };
+  };
+
+  users.groups.media = {};
 }
