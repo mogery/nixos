@@ -21,6 +21,7 @@
     ../../modules/nixos/stylix.nix
     ../../modules/nixos/fluffychat.nix
     ../../modules/nixos/berkeley-mono.nix
+    ../../modules/nixos/eduroam.nix
   ];
 
   system.stateVersion = "24.11";
