@@ -18,6 +18,7 @@
     ../../modules/home-manager/thunderbird.nix
     ../../modules/home-manager/feishin.nix
     ../../modules/home-manager/berkeley-mono.nix
+    ../../modules/home-manager/obsidian.nix
   ];
 
   home.username = "mogery";
