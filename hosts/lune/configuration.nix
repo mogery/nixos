@@ -14,7 +14,7 @@
     ../../modules/nixos/nh.nix
     ../../modules/nixos/nginx.nix
     ../../modules/nixos/jellyfin.nix
-    ../../modules/nixos/zsh.nix
+    ../../modules/nixos/nushell.nix
     ../../modules/nixos/slskd.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/matrix/matrix-synapse.nix
