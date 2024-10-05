@@ -22,6 +22,7 @@
     ../../modules/nixos/fluffychat.nix
     ../../modules/nixos/berkeley-mono.nix
     ../../modules/nixos/eduroam.nix
+    ../../modules/nixos/shell-on-fail.nix
   ];
 
   system.stateVersion = "24.11";

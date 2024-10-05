@@ -19,6 +19,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/nixos/fluffychat.nix
     ../../modules/nixos/berkeley-mono.nix
+    ../../modules/nixos/shell-on-fail.nix
   ];
 
   system.stateVersion = "23.11";

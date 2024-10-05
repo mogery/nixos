@@ -21,6 +21,7 @@
     ../../modules/nixos/matrix/mautrix-imessage.nix
     ../../modules/nixos/matrix/mautrix-instagram.nix
     ../../modules/nixos/matrix/mautrix-messenger.nix
+    ../../modules/nixos/shell-on-fail.nix
   ];
 
   system.stateVersion = "24.11";
