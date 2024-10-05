@@ -14,7 +14,6 @@
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/wifi.nix
     ../../modules/nixos/nh.nix
-    ../../modules/nixos/zsh.nix
     ../../modules/nixos/plasma.nix
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/tailscale.nix
@@ -23,6 +22,7 @@
     ../../modules/nixos/berkeley-mono.nix
     ../../modules/nixos/eduroam.nix
     ../../modules/nixos/shell-on-fail.nix
+    ../../modules/nixos/nushell.nix
   ];
 
   system.stateVersion = "24.11";

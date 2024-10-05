@@ -6,7 +6,6 @@
     ../../modules/home-manager/plasma.nix
     ../../modules/home-manager/plasma-static.nix
     ../../modules/home-manager/git.nix
-    ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/vscode.nix
     ../../modules/home-manager/cursor.nix
     ../../modules/home-manager/1password.nix
@@ -20,6 +19,7 @@
     ../../modules/home-manager/feishin.nix
     ../../modules/home-manager/berkeley-mono.nix
     ../../modules/home-manager/obsidian.nix
+    ../../modules/home-manager/nushell.nix
   ];
 
   home.username = "mogery";
@@ -28,6 +28,10 @@
   programs.home-manager.enable = true;
 
   programs.zsh.shellAliases = {
+    update = "nh os switch";
+  };
+
+  programs.nushell.shellAliases = {
     update = "nh os switch";
   };
 }
