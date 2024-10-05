@@ -13,7 +13,7 @@
   programs.home-manager.enable = true;
 
   programs.zsh.shellAliases = {
-    update = "sudo nixos-rebuild switch --flake /home/mogery/nixos#lune";
+    update = "nh os switch";
   };
 
   programs.nushell.shellAliases = {

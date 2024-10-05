@@ -14,6 +14,7 @@
     ../../modules/nixos/nh.nix
     ../../modules/nixos/nginx.nix
     ../../modules/nixos/jellyfin.nix
+    ../../modules/nixos/zsh.nix
     ../../modules/nixos/slskd.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/matrix/matrix-synapse.nix
@@ -58,7 +59,7 @@
   users.users.mogery = {
     isNormalUser = true;
     description = "mogery";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "nginx" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGHjO+acP+XXWdGGr4GwX6ncEX8Nf/rcgwDyEfUPKE9"
     ];
@@ -85,10 +86,21 @@
         enableACME = true;
         forceSSL = true;
 
+        root = "/var/www/mogery.me";
+
         locations."= /".extraConfig = ''
             return 301 https://blog.mogery.me;
         '';
+
+        locations."~ /fonts".extraConfig = ''
+            add_header 'Access-Control-Allow-Origin' '*';
+            add_header 'Access-Control-Allow-Methods' 'GET';
+        '';
       };
     };
+  };
+
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_watches" = "1048576";
   };
 }
