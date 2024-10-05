@@ -8,6 +8,7 @@
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/vscode.nix
+    ../../modules/home-manager/cursor.nix
     ../../modules/home-manager/1password.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/discord.nix
