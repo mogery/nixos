@@ -16,6 +16,7 @@
     ../../modules/home-manager/obsidian.nix
     ../../modules/home-manager/berkeley-mono.nix
     ../../modules/home-manager/nushell.nix
+    ../../modules/home-manager/pomodoro.nix
   ];
 
   home.username = "mogery";
