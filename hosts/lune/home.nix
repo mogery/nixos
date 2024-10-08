@@ -4,7 +4,7 @@
   imports = [
     inputs.nur.hmModules.nur
     ../../modules/home-manager/git.nix
-    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/nushell.nix
   ];
 
   home.username = "mogery";
@@ -13,6 +13,10 @@
   programs.home-manager.enable = true;
 
   programs.zsh.shellAliases = {
+    update = "sudo nixos-rebuild switch --flake /home/mogery/nixos#lune";
+  };
+
+  programs.nushell.shellAliases = {
     update = "sudo nixos-rebuild switch --flake /home/mogery/nixos#lune";
   };
 }

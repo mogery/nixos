@@ -11,7 +11,6 @@
     ../../modules/nixos/flakes.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/nh.nix
-    ../../modules/nixos/zsh.nix
     ../../modules/nixos/plasma.nix
     ../../modules/nixos/tz-locale.nix
     ../../modules/nixos/tailscale.nix
@@ -19,6 +18,8 @@
     ../../modules/nixos/steam.nix
     ../../modules/nixos/fluffychat.nix
     ../../modules/nixos/berkeley-mono.nix
+    ../../modules/nixos/shell-on-fail.nix
+    ../../modules/nixos/nushell.nix
   ];
 
   system.stateVersion = "23.11";
