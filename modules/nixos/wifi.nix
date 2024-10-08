@@ -1,8 +1,8 @@
 {
-  networking.wireless.iwd = {
-    enable = true;
-    settings.General.EnableNetworkConfiguration = true;
-  };
+  #networking.wireless.iwd = {
+  #  enable = true;
+  #  settings.General.EnableNetworkConfiguration = true;
+  #};
 
-  networking.networkmanager.wifi.backend = "iwd";
+  #networking.networkmanager.wifi.backend = "iwd";
 }

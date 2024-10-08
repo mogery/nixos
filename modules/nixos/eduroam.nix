@@ -2,9 +2,7 @@
   environment.etc."NetworkManager/system-connections/eduroam.nmconnection".text = ''
     [connection]
     id=eduroam
-    uuid=bec5ee7c-73ef-41b3-80bb-ba19276f44e3
     type=wifi
-    timestamp=1726824080
 
     [wifi]
     mode=infrastructure
