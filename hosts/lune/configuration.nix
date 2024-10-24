@@ -61,7 +61,8 @@
     description = "mogery";
     extraGroups = [ "networkmanager" "wheel" "nginx" ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGHjO+acP+XXWdGGr4GwX6ncEX8Nf/rcgwDyEfUPKE9"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGHjO+acP+XXWdGGr4GwX6ncEX8Nf/rcgwDyEfUPKE9" # Hetzner key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAgkAOAzkBgfepWzLNoMQ6c1knNRi6pWN109f2kwxCoO" # Shortcuts on MG+
     ];
   };
 
