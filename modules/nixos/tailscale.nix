@@ -1,7 +1,11 @@
 { config, ... }:
 
 {
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+    checkReversePath = "loose";
+  };
   
   networking.firewall = {
     trustedInterfaces = [ "tailscale0" ];
