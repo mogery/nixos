@@ -20,6 +20,7 @@
     ../../modules/nixos/berkeley-mono.nix
     ../../modules/nixos/shell-on-fail.nix
     ../../modules/nixos/nushell.nix
+    ../../modules/nixos/unityhub.nix
   ];
 
   system.stateVersion = "23.11";

@@ -20,12 +20,17 @@
     stylix.url = "github:danth/stylix";
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+
+    osu-nixos = {
+      url = "github:notgne2/osu-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixos-apple-silicon, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs { inherit system; overlays = [ inputs.osu-nixos.overlay ]; };
     in
     {
       nixosConfigurations.blade = nixpkgs.lib.nixosSystem {

@@ -21,6 +21,7 @@
     ../../modules/home-manager/obsidian.nix
     ../../modules/home-manager/nushell.nix
     ../../modules/home-manager/pomodoro.nix
+    ../../modules/home-manager/osu.nix
   ];
 
   home.username = "mogery";
